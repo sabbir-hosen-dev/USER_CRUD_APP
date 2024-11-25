@@ -3,6 +3,7 @@ import MainLayout from "../Layout/MainLayout";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Users from "../Page/Users";
 import AddUser from "../Page/AddUser";
+import Edit from "../Page/Edit";
 
 const route = createBrowserRouter([
   {
@@ -21,6 +22,9 @@ const route = createBrowserRouter([
       {
         path: "/add-user",
         element: <AddUser />
+      },{
+        path: "/users/edit",
+        element: <Edit />
       }
     ]
   }

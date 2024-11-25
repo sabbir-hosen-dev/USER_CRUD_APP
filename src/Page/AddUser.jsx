@@ -10,7 +10,7 @@ function AddUser() {
 
     const user = {name,email}
     
-    fetch("http://localhost:600/addUser",{
+    fetch("http://localhost:600/users",{
       method: "POST",
       headers: {
         "Content-Type" : "application/json"

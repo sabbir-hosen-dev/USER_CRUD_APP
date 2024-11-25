@@ -1,15 +1,22 @@
 import { useLoaderData } from "react-router-dom";
 import User from "../Components/User";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../main";
 
 function Users() {
   const loaderData = useLoaderData();
 
-  const [users, setUsers] = useState(loaderData);
+
+  const {users,setUsers} = useContext(UserContext)
+
+  useEffect(() => {
+    setUsers(loaderData)
+  },[])
+
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:600/user/${id}`, {
+    fetch(`http://localhost:600/users/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -18,11 +25,13 @@ function Users() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const newUsers = users.filter(user => user._id !== id)
-        setUsers(newUsers)
+        const newUsers = users.filter((user) => user._id !== id);
+        setUsers(newUsers);
       })
       .catch((err) => console.log(err));
   };
+
+
 
   return (
     <div className="overflow-x-auto">
