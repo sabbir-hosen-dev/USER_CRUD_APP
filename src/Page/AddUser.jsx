@@ -19,7 +19,7 @@ function AddUser() {
       
     })
     .then(res => res.json())
-    .then(user => console.log(user))
+    .then(() => form.reset())
     .catch(err => console.log(err))
   }
   return (
